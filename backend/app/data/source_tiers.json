@@ -1,0 +1,61 @@
+{
+  "tiers": [
+    {
+      "tier": 1,
+      "label": "Highest confidence",
+      "description": "Structured, stable identifiers and credits.",
+      "providers": [
+        {"id": "wikidata", "name": "Wikidata", "kind": "structured", "auto": true},
+        {"id": "musicbrainz", "name": "MusicBrainz", "kind": "structured", "auto": true},
+        {"id": "discogs", "name": "Discogs", "kind": "credits", "auto": true},
+        {"id": "official-site", "name": "Official artist websites", "kind": "primary", "auto": false},
+        {"id": "liner-notes", "name": "Album liner notes", "kind": "primary", "auto": false},
+        {"id": "copyright-db", "name": "Copyright / rights databases", "kind": "primary", "auto": false}
+      ]
+    },
+    {
+      "tier": 2,
+      "label": "Secondary scholarly",
+      "description": "Narratives and research with editorial review.",
+      "providers": [
+        {"id": "wikipedia", "name": "Wikipedia", "kind": "encyclopedia", "auto": true},
+        {"id": "books", "name": "Books", "kind": "longform", "auto": false},
+        {"id": "academic", "name": "Academic journals & theses", "kind": "research", "auto": false},
+        {"id": "archives", "name": "National & university archives", "kind": "archive", "auto": false}
+      ]
+    },
+    {
+      "tier": 3,
+      "label": "Oral & audiovisual",
+      "description": "Where mentorship and influence are usually stated aloud.",
+      "providers": [
+        {"id": "interview", "name": "Interviews", "kind": "oral", "auto": false},
+        {"id": "podcast", "name": "Podcasts", "kind": "oral", "auto": false},
+        {"id": "documentary", "name": "Documentaries", "kind": "av", "auto": false},
+        {"id": "tv", "name": "TV appearances", "kind": "av", "auto": false}
+      ]
+    },
+    {
+      "tier": 4,
+      "label": "Contemporary press",
+      "description": "Events, reviews, festival and label context.",
+      "providers": [
+        {"id": "newspaper", "name": "Newspapers", "kind": "press", "auto": false},
+        {"id": "magazine", "name": "Music magazines", "kind": "press", "auto": false},
+        {"id": "festival", "name": "Festival websites", "kind": "web", "auto": false},
+        {"id": "label", "name": "Label websites", "kind": "web", "auto": false}
+      ]
+    },
+    {
+      "tier": 5,
+      "label": "Use carefully",
+      "description": "Leads for research — verify before promoting a relationship.",
+      "providers": [
+        {"id": "fan-site", "name": "Fan sites", "kind": "community", "auto": false},
+        {"id": "blog", "name": "Blogs", "kind": "community", "auto": false},
+        {"id": "social", "name": "Social media", "kind": "community", "auto": false},
+        {"id": "forum", "name": "Forums", "kind": "community", "auto": false}
+      ]
+    }
+  ]
+}

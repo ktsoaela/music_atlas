@@ -1,0 +1,14 @@
+.env
+.run/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/
+.next/
+out/
+dist/
+*.egg-info/
+.idea/
+.vscode/
+neo4j_data/
