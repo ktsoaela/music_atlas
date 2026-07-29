@@ -13,6 +13,10 @@ MERGE (l:Language {id:'lang-xitsonga'}) SET l.name='Xitsonga', l.family='Tswa-Ro
 MERGE (l:Language {id:'lang-northern-sotho'}) SET l.name='Northern Sotho', l.family='Sotho-Tswana';
 MERGE (l:Language {id:'lang-english'}) SET l.name='English', l.family='Germanic';
 MERGE (l:Language {id:'lang-afrikaans'}) SET l.name='Afrikaans', l.family='Germanic';
+MERGE (l:Language {id:'lang-isindebele'}) SET l.name='isiNdebele', l.family='Nguni';
+MERGE (l:Language {id:'lang-siswati'}) SET l.name='siSwati', l.family='Nguni';
+MERGE (l:Language {id:'lang-tshivenda'}) SET l.name='Tshivenda', l.family='Venda';
+MERGE (l:Language {id:'lang-sasl'}) SET l.name='South African Sign Language', l.family='Sign Language';
 
 MERGE (c:Culture {id:'culture-basotho'}) SET c.name='Basotho', c.description='Sesotho-speaking cultural world spanning Lesotho and parts of South Africa — migrant labour, praise singing, and accordion-driven popular music.';
 MERGE (c:Culture {id:'culture-tswana'}) SET c.name='Tswana', c.description='Setswana cultural world across Botswana and South Africa (esp. North West) — storytelling, traditional dance music, and Motswako hip hop.';
@@ -25,6 +29,11 @@ MATCH (l:Language {id:'lang-sesotho'}), (p:Place {id:'province-gauteng'}) MERGE 
 MATCH (l:Language {id:'lang-setswana'}), (p:Place {id:'country-botswana'}) MERGE (l)-[:SPOKEN_IN]->(p);
 MATCH (l:Language {id:'lang-setswana'}), (p:Place {id:'province-north-west'}) MERGE (l)-[:SPOKEN_IN]->(p);
 MATCH (l:Language {id:'lang-setswana'}), (p:Place {id:'province-gauteng'}) MERGE (l)-[:SPOKEN_IN]->(p);
+MATCH (l:Language {id:'lang-isindebele'}), (p:Place {id:'province-mpumalanga'}) MERGE (l)-[:SPOKEN_IN]->(p);
+MATCH (l:Language {id:'lang-siswati'}), (p:Place {id:'province-mpumalanga'}) MERGE (l)-[:SPOKEN_IN]->(p);
+MATCH (l:Language {id:'lang-siswati'}), (p:Place {id:'country-eswatini'}) MERGE (l)-[:SPOKEN_IN]->(p);
+MATCH (l:Language {id:'lang-tshivenda'}), (p:Place {id:'province-limpopo'}) MERGE (l)-[:SPOKEN_IN]->(p);
+MATCH (l:Language {id:'lang-sasl'}), (p:Place {id:'country-south-africa'}) MERGE (l)-[:SPOKEN_IN]->(p);
 
 MERGE (i:Instrument {id:'inst-lesiba'}) SET i.name='Lesiba', i.kind='mouth bow', i.culture='Basotho';
 MERGE (i:Instrument {id:'inst-accordion'}) SET i.name='Accordion', i.kind='free reed', i.culture='Basotho / Famo';
@@ -81,10 +90,10 @@ MATCH (g:Genre {id:'genre-hip-hop'}), (p:Genre {id:'genre-motswako'}) MERGE (g)-
 
 MERGE (a:Artist {id:'artist-culture-spears'}) SET a.name='Culture Spears', a.bio='Botswana traditional Tswana music and dance group (from 2005) — hits like Kulenyane and Khudu carried rural storytelling across the Setswana world.', a.active_from=2005, a.languages=['Setswana'], a.roles=['group'], a.generation=4;
 MERGE (a:Artist {id:'artist-mma-ausi'}) SET a.name='Mma Ausi', a.bio='Setswana cultural artist, singer and dancer — ambassador of traditional Tswana music, fashion and heritage, often linked with Culture Spears.', a.active_from=2005, a.languages=['Setswana'], a.roles=['artist'], a.generation=4;
-MERGE (a:Artist {id:'artist-morafe'}) SET a.name='Morafe', a.bio='Motswako hip-hop group — Kay Gee, Towdee Mac and Khuli Chana — classic albums like Maruapula in the HHP lineage.', a.active_from=2003, a.languages=['Setswana','English'], a.roles=['group'], a.generation=4;
-MERGE (a:Artist {id:'artist-khuli-chana'}) SET a.name='Khulani Morule', a.stage_name='Khuli Chana', a.bio='Motswako MC from Morafe who carried Setswana rap into solo national careers.', a.active_from=2003, a.languages=['Setswana','English'], a.roles=['artist'], a.generation=5;
-MERGE (a:Artist {id:'artist-towdee-mac'}) SET a.name='Lerothodi Moagi', a.stage_name='Towdee Mac', a.bio='Morafe member and Motswako voice.', a.active_from=2003, a.languages=['Setswana','English'], a.roles=['artist'], a.generation=4;
-MERGE (a:Artist {id:'artist-kay-gee'}) SET a.name='Kgaugelo Phaswana', a.stage_name='Kay Gee', a.bio='Morafe member in the Motswako group era.', a.active_from=2003, a.languages=['Setswana','English'], a.roles=['artist'], a.generation=4;
+MERGE (a:Artist {id:'artist-morafe'}) SET a.name='Morafe', a.bio='Motswako hip-hop group — Kay Gee, Towdee Mac and Khuli Chana — formed 1995 in Mafikeng, debut album Maru A Pula, in the HHP lineage.', a.active_from=1995, a.languages=['Setswana','English'], a.roles=['group'], a.generation=4;
+MERGE (a:Artist {id:'artist-khuli-chana'}) SET a.name='Khulane Morule', a.stage_name='Khuli Chana', a.bio='Motswako MC from Morafe, born in Mmabatho, who carried Setswana rap into solo national careers — breakthrough solo album Motswakoriginator (2009).', a.active_from=2003, a.languages=['Setswana','English'], a.roles=['artist'], a.generation=5;
+MERGE (a:Artist {id:'artist-towdee-mac'}) SET a.name='Lerothodi Moagi', a.stage_name='Towdee Mac', a.bio='Morafe co-founder, producer and Motswako voice — production credits include Morafe\'s "Bereka" and HHP\'s "Platinum Visa".', a.active_from=2003, a.languages=['Setswana','English'], a.roles=['artist'], a.generation=4;
+MERGE (a:Artist {id:'artist-kay-gee'}) SET a.name='Kgaugelo Goodchild Phaswana', a.stage_name='Kay Gee', a.bio='Morafe co-founder, born in Venda before his family moved to Mafikeng — taught Khuli Chana to rap in their earlier group Jazzadaz.', a.active_from=2003, a.languages=['Setswana','English'], a.roles=['artist'], a.generation=4;
 MERGE (a:Artist {id:'artist-tau-ea-matsekha'}) SET a.name='Tau ea Matsekha', a.bio='Major Famo / accordion vocal force in Basotho popular music — migrant-worker storytelling tradition.', a.active_from=1980, a.languages=['Sesotho'], a.roles=['artist'], a.generation=2;
 MERGE (a:Artist {id:'artist-mahlanya'}) SET a.name='Mahlanya', a.bio='Famo artist and accordion-driven Sesotho popular music figure — performances circulate widely on DVD and YouTube.', a.active_from=1990, a.languages=['Sesotho'], a.roles=['artist'], a.generation=3;
 MERGE (a:Artist {id:'artist-semanyane'}) SET a.name='Semanyane', a.bio='Famo / Sesotho accordion vocalist in the Basotho migrant-music lineage.', a.active_from=1985, a.languages=['Sesotho'], a.roles=['artist'], a.generation=2;
