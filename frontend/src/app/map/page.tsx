@@ -1,11 +1,4 @@
-"use client";
-
-import dynamic from "next/dynamic";
-
-const MapView = dynamic(() => import("@/components/MapView").then((m) => m.MapView), {
-  ssr: false,
-  loading: () => <p className="panel-note">Loading map…</p>,
-});
+import { MapViewLazy } from "@/components/MapViewLazy";
 
 export default function MapPage() {
   return (
@@ -16,7 +9,7 @@ export default function MapPage() {
         Click a city or township to see which artists the atlas places there —
         Cape Town, Johannesburg, Durban, Soweto, and more.
       </p>
-      <MapView />
+      <MapViewLazy />
     </main>
   );
 }

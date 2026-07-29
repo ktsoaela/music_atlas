@@ -1,19 +1,5 @@
-"use client";
-
-import dynamic from "next/dynamic";
-import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
-
-const InfluenceGraph = dynamic(
-  () => import("@/components/InfluenceGraph").then((m) => m.InfluenceGraph),
-  { ssr: false, loading: () => <p className="panel-note">Loading graph…</p> }
-);
-
-function GraphInner() {
-  const params = useSearchParams();
-  const artistId = params.get("artist") || undefined;
-  return <InfluenceGraph focusId={artistId} />;
-}
+import { GraphExplorer } from "@/components/GraphExplorer";
 
 export default function GraphPage() {
   return (
@@ -25,7 +11,7 @@ export default function GraphPage() {
         Toggle G1–G6 chips, color by generation, follow influence down the family tree.
       </p>
       <Suspense fallback={<p className="panel-note">Loading…</p>}>
-        <GraphInner />
+        <GraphExplorer />
       </Suspense>
     </main>
   );

@@ -1,14 +1,5 @@
-"use client";
-
 import { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
-import { AskPanel } from "@/components/AskPanel";
-
-function AskInner() {
-  const params = useSearchParams();
-  const q = params.get("q") || undefined;
-  return <AskPanel initialQuestion={q} />;
-}
+import { AskQuery } from "@/components/AskQuery";
 
 export default function AskPage() {
   return (
@@ -21,7 +12,7 @@ export default function AskPage() {
         phrasing; without it you still get structured graph answers.
       </p>
       <Suspense fallback={<p className="panel-note">Loading…</p>}>
-        <AskInner />
+        <AskQuery />
       </Suspense>
     </main>
   );
