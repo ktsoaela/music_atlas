@@ -1,7 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { api, AIAskResponse } from "@/lib/api";
+import { api } from "@/lib/api";
+import type { AIAskResponse } from "@/types/ai";
 
 const QUICK_QUESTIONS = [
   "Who inspired HHP?",

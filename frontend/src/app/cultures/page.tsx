@@ -1,40 +1,12 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { api } from "@/lib/api";
 
-type CultureRow = {
-  id: string;
-  name: string;
-  description?: string;
-  languages: string[];
-  genres: string[];
-  artist_count: number;
-};
+// Live Neo4j-backed data (mutable via /api/admin/enrich) — always render per request,
+// never bake into a build-time static page.
+export const dynamic = "force-dynamic";
 
-type LanguageRow = {
-  id: string;
-  name: string;
-  family?: string;
-  artist_count: number;
-  places: string[];
-  cultures: string[];
-};
-
-export default function CulturesPage() {
-  const [cultures, setCultures] = useState<CultureRow[]>([]);
-  const [languages, setLanguages] = useState<LanguageRow[]>([]);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    Promise.all([api.cultures(), api.languages()])
-      .then(([c, l]) => {
-        setCultures(c);
-        setLanguages(l);
-      })
-      .catch((e) => setError(String(e)));
-  }, []);
+export default async function CulturesPage() {
+  const [cultures, languages] = await Promise.all([api.cultures(), api.languages()]);
 
   return (
     <main className="page">
@@ -44,7 +16,6 @@ export default function CulturesPage() {
         Music follows people, languages, and migration — Basotho Famo through mine
         hostels, Setswana Motswako from Botswana and Mahikeng into national hip hop.
       </p>
-      {error && <p className="panel-note">{error}</p>}
 
       <section className="rel-list" style={{ marginTop: "2rem" }}>
         <p className="eyebrow">Cultures</p>
@@ -82,8 +53,7 @@ export default function CulturesPage() {
                 </span>
               </span>
               <span>
-                {l.artist_count} ·{" "}
-                <Link href={`/movements`}>genres</Link>
+                {l.artist_count} · <Link href={`/movements`}>genres</Link>
               </span>
             </li>
           ))}

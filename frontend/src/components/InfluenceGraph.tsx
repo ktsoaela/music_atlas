@@ -13,7 +13,8 @@ import ReactFlow, {
 } from "reactflow";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { api, GraphPayload } from "@/lib/api";
+import { api } from "@/lib/api";
+import type { GraphPayload } from "@/types/graph";
 import "reactflow/dist/style.css";
 
 const ForceGraph2D = dynamic(() => import("react-force-graph-2d"), { ssr: false });

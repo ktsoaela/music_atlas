@@ -3,7 +3,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from "react-leaflet";
 import Link from "next/link";
-import { api, PlaceNode, ArtistSummary } from "@/lib/api";
+import { api } from "@/lib/api";
+import type { PlaceNode } from "@/types/place";
+import type { ArtistSummary } from "@/types/artist";
 import "leaflet/dist/leaflet.css";
 
 function FitSA({ places }: { places: PlaceNode[] }) {
