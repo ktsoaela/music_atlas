@@ -151,6 +151,74 @@ a:hover {
   animation: rise 1s ease-out 0.3s both;
 }
 
+.ask-hero-card {
+  border: 1px solid rgba(226, 181, 90, 0.35);
+  background: rgba(16, 22, 16, 0.72);
+  padding: 1rem;
+  margin: 1.25rem 0;
+}
+
+.hero-query-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.atlas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.atlas-card {
+  border: 1px solid rgba(226, 181, 90, 0.35);
+  background: rgba(16, 22, 16, 0.62);
+  padding: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.atlas-card strong {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+}
+
+.atlas-card span {
+  color: var(--mist);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.trend-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.trend-row a {
+  border: 1px solid rgba(226, 181, 90, 0.35);
+  color: var(--gold);
+  padding: 0.35rem 0.65rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.journey-card {
+  border-top: 1px solid rgba(226, 181, 90, 0.25);
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+}
+
+.journey-card h2 {
+  font-family: Syne, sans-serif;
+  margin: 0.2rem 0 0.7rem;
+}
+
 .cta,
 button,
 .ask-form button,
@@ -551,6 +619,26 @@ button,
   resize: vertical;
 }
 
+.quick-ask {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.5rem;
+  max-width: 52rem;
+}
+
+.quick-ask button {
+  border: 1px solid rgba(226, 181, 90, 0.35);
+  background: transparent;
+  color: var(--mist);
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.92rem;
+  text-align: left;
+  padding: 0.65rem 0.75rem;
+}
+
 .ask-answer {
   white-space: pre-wrap;
   line-height: 1.55;
@@ -570,6 +658,92 @@ button,
   margin-top: 1.5rem;
 }
 
+.timeline-controls {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-controls label {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--mist);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.timeline-controls select {
+  background: var(--veld);
+  border: 1px solid rgba(226, 181, 90, 0.35);
+  color: var(--paper);
+  padding: 0.5rem 0.6rem;
+  min-width: 15rem;
+}
+
+.decade-group h2 {
+  font-family: Syne, sans-serif;
+  color: var(--gold);
+  font-size: 1.2rem;
+  margin: 0.5rem 0 0.8rem;
+}
+
+.explorer-shell {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.explorer-timeline {
+  border: 1px solid rgba(226, 181, 90, 0.3);
+  background: rgba(16, 22, 16, 0.65);
+  padding: 0.9rem;
+}
+
+.explorer-timeline label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--mist);
+}
+
+.explorer-timeline input[type="range"] {
+  width: 100%;
+}
+
+.explorer-graph .obsidian-layout,
+.explorer-graph .atlas-canvas {
+  min-height: 72vh;
+}
+
+.artist-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.artist-tabs button {
+  border: 1px solid rgba(226, 181, 90, 0.4);
+  background: transparent;
+  color: var(--gold);
+  font-family: Syne, sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.45rem 0.7rem;
+}
+
+.artist-tabs button.active {
+  background: var(--gold);
+  color: var(--ink);
+}
+
 @media (max-width: 860px) {
   .map-layout {
     grid-template-columns: 1fr;
@@ -583,5 +757,9 @@ button,
   .hero {
     min-height: 90vh;
     padding-bottom: 3rem;
+  }
+
+  .explorer-shell {
+    grid-template-columns: 1fr;
   }
 }

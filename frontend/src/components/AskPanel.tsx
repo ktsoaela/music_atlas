@@ -3,9 +3,23 @@
 import { FormEvent, useState } from "react";
 import { api, AIAskResponse } from "@/lib/api";
 
-export function AskPanel({ artistId }: { artistId?: string }) {
+const QUICK_QUESTIONS = [
+  "Who inspired HHP?",
+  "How did Kwaito begin?",
+  "Why is Chicco Twala important?",
+  "Show every artist from Limpopo",
+];
+
+export function AskPanel({
+  artistId,
+  initialQuestion,
+}: {
+  artistId?: string;
+  initialQuestion?: string;
+}) {
   const [question, setQuestion] = useState(
-    "Who inspired ProKid, and how does Cape Town hip hop connect to Gauteng?"
+    initialQuestion?.trim() ||
+      "Who inspired ProKid, and how does Cape Town hip hop connect to Gauteng?"
   );
   const [result, setResult] = useState<AIAskResponse | null>(null);
   const [loading, setLoading] = useState(false);
@@ -38,6 +52,13 @@ export function AskPanel({ artistId }: { artistId?: string }) {
           {loading ? "Searching graph…" : "Ask"}
         </button>
       </form>
+      <div className="quick-ask">
+        {QUICK_QUESTIONS.map((prompt) => (
+          <button key={prompt} type="button" onClick={() => setQuestion(prompt)}>
+            {prompt}
+          </button>
+        ))}
+      </div>
       {error && <p className="panel-note">{error}</p>}
       {result && (
         <div className="ask-result">

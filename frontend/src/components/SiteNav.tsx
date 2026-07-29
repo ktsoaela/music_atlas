@@ -1,15 +1,16 @@
 import Link from "next/link";
 
 const links = [
-  { href: "/geography", label: "Geography" },
-  { href: "/map", label: "Map" },
-  { href: "/movements", label: "Movements" },
-  { href: "/cultures", label: "Cultures" },
+  { href: "/map", label: "Explore map" },
   { href: "/timeline", label: "Timeline" },
-  { href: "/graph", label: "Influence" },
+  { href: "/movements", label: "Genres" },
   { href: "/artists", label: "Artists" },
+  { href: "/explorer", label: "Explorer" },
+  { href: "/graph", label: "Connections" },
+  { href: "/ask", label: "Ask anything" },
+  { href: "/geography", label: "Places" },
+  { href: "/cultures", label: "Cultures" },
   { href: "/sources", label: "Sources" },
-  { href: "/ask", label: "Ask" },
 ];
 
 export function SiteNav() {

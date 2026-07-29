@@ -1,4 +1,14 @@
+"use client";
+
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { AskPanel } from "@/components/AskPanel";
+
+function AskInner() {
+  const params = useSearchParams();
+  const q = params.get("q") || undefined;
+  return <AskPanel initialQuestion={q} />;
+}
 
 export default function AskPage() {
   return (
@@ -10,7 +20,9 @@ export default function AskPage() {
         <a href="/sources">source citations</a>. Add an <code>OPENAI_API_KEY</code> for LLM
         phrasing; without it you still get structured graph answers.
       </p>
-      <AskPanel />
+      <Suspense fallback={<p className="panel-note">Loading…</p>}>
+        <AskInner />
+      </Suspense>
     </main>
   );
 }

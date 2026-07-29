@@ -206,20 +206,18 @@ export function InfluenceGraph({ focusId }: { focusId?: string }) {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
   const load = useCallback((id?: string) => {
-    setError(null);
     api
       .graph(id)
-      .then(setRaw)
+      .then((rows) => {
+        setRaw(rows);
+        setError(null);
+      })
       .catch((e) => setError(String(e)));
   }, []);
 
   useEffect(() => {
     load(focusId);
   }, [focusId, load]);
-
-  useEffect(() => {
-    if (view === "generations") setColorMode("generation");
-  }, [view]);
 
   const genres = useMemo(() => {
     if (!raw) return [];
@@ -340,7 +338,14 @@ export function InfluenceGraph({ focusId }: { focusId?: string }) {
   return (
     <div className="obsidian-graph">
       <div className="graph-mode-tabs">
-        <button type="button" className={view === "generations" ? "active" : ""} onClick={() => setView("generations")}>
+        <button
+          type="button"
+          className={view === "generations" ? "active" : ""}
+          onClick={() => {
+            setColorMode("generation");
+            setView("generations");
+          }}
+        >
           Generations
         </button>
         <button type="button" className={view === "atlas" ? "active" : ""} onClick={() => setView("atlas")}>
