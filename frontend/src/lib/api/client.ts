@@ -1,5 +1,20 @@
-export const API_URL =
-  process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || "http://localhost:8000";
+/**
+ * Server Components/Actions run inside the frontend container, where "localhost"
+ * means the frontend container itself — reaching the backend needs its Docker
+ * network address (API_INTERNAL_URL, e.g. http://backend:8000). Browser code needs
+ * the publicly published host URL instead (NEXT_PUBLIC_API_URL). Same code, two
+ * valid base URLs depending on where it executes.
+ */
+function resolveApiUrl(): string {
+  const isServer = typeof window === "undefined";
+  const url =
+    (isServer && process.env.API_INTERNAL_URL) ||
+    process.env.NEXT_PUBLIC_API_URL ||
+    "http://localhost:8000";
+  return url.replace(/\/$/, "");
+}
+
+export const API_URL = resolveApiUrl();
 
 type GetOptions = {
   /** Seconds to let Next's server-side data cache serve a stale copy. `false` = always fresh. */
